@@ -18,7 +18,7 @@
 
 	
 
-	<select id="getBoardContent" resultType="com.blog.project.board.model.BoardVO" parameterType="com.freehoon.web.board.model.BoardVO">
+	<select id="getBoardContent" resultType="com.blog.project.board.model.BoardVO" parameterType="com.blog.project.board.model.BoardVO">
 
 		SELECT BID, CATE_CD, TITLE, CONTENT, TAG, VIEW_CNT, REG_ID, REG_DT, EDIT_DT
 		FROM TBL_BOARD

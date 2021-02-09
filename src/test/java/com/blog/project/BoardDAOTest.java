@@ -28,12 +28,13 @@ import com.blog.project.board.model.BoardVO;
 
 
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 
 @ContextConfiguration(locations = {
 
-		"classpath:spring/root-context.xml"
+		"classpath:spring/root-context.xml",
+
+		// "classpath:spring/dataSource-context.xml"
 
 		})
 

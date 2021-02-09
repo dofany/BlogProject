@@ -5,7 +5,8 @@ import java.util.List;
 import com.blog.project.board.model.BoardVO;
 
 public interface BoardDAO {
-public List<BoardVO> getBoardList() throws Exception;
+	
+	public List<BoardVO> getBoardList() throws Exception;
 
 	
 
