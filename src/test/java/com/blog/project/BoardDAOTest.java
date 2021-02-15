@@ -22,9 +22,11 @@ import org.springframework.test.context.ContextConfiguration;
 
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.blog.project.board.dao.BoardDAO;
-import com.blog.project.board.model.BoardVO;
 
+
+import com.blog.project.board.dao.BoardDAO;
+
+import com.blog.project.board.model.BoardVO;
 
 
 
@@ -32,9 +34,7 @@ import com.blog.project.board.model.BoardVO;
 
 @ContextConfiguration(locations = {
 
-		"classpath:spring/root-context.xml",
-
-		// "classpath:spring/dataSource-context.xml"
+		"classpath:spring/root-context.xml"
 
 		})
 
@@ -50,7 +50,7 @@ public class BoardDAOTest {
 
 	
 
-	@Test 
+	@Test @Ignore
 
 	public void testGetBoardList() throws Exception {
 
@@ -77,7 +77,6 @@ public class BoardDAOTest {
 	
 
 	@Test @Ignore
-
 	public void testGetBoardContent() throws Exception {
 
 		BoardVO boardVO = boardDAO.getBoardContent(1);
@@ -112,13 +111,13 @@ public class BoardDAOTest {
 
 	
 
-	@Test @Ignore 
+	@Test @Ignore
 
 	public void testInsertBoard() throws Exception {
 
 		BoardVO boardVO = new BoardVO();
 
-		boardVO.setCate_cd("1");
+		boardVO.setCate_id("1");
 
 		boardVO.setTitle("첫번째 게시물 입니다.");
 
@@ -148,7 +147,7 @@ public class BoardDAOTest {
 
 	
 
-	@Test @Ignore 
+	@Test @Ignore
 
 	public void testUpdateBoard() throws Exception {
 
@@ -156,7 +155,7 @@ public class BoardDAOTest {
 
 		boardVO.setBid(1);
 
-		boardVO.setCate_cd("1");
+		boardVO.setCate_id("1");
 
 		boardVO.setTitle("첫번째 게시물 입니다-수정 합니다.");
 
@@ -208,8 +207,7 @@ public class BoardDAOTest {
 
 
 
-	@Test @Ignore
-
+	@Test 
 	public void testUpdateViewCnt() throws Exception {
 
 		
@@ -231,3 +229,5 @@ public class BoardDAOTest {
 	}
 
 }
+
+

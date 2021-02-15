@@ -3,13 +3,21 @@ package com.blog.project.board.model;
 public class BoardVO {
 
 	public int bid;
-	public String cate_cd;
+
+	public String cate_id;
+
 	public String title;
+
 	public String content;
+
 	public String tag;
+
 	public int view_cnt;
+
 	public String reg_id;
+
 	public String reg_dt;
+
 	public String edit_dt;
 
 	public int getBid() {
@@ -20,12 +28,12 @@ public class BoardVO {
 		this.bid = bid;
 	}
 
-	public String getCate_cd() {
-		return cate_cd;
+	public String getCate_id() {
+		return cate_id;
 	}
 
-	public void setCate_cd(String cate_cd) {
-		this.cate_cd = cate_cd;
+	public void setCate_id(String cate_id) {
+		this.cate_id = cate_id;
 	}
 
 	public String getTitle() {

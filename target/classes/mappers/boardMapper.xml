@@ -12,7 +12,7 @@
 
 <select id="getBoardList" resultType="com.blog.project.board.model.BoardVO">
 
-		SELECT BID, CATE_CD, TITLE, CONTENT, TAG, VIEW_CNT, REG_ID, REG_DT, EDIT_DT
+		SELECT BID, CATE_ID, TITLE, CONTENT, TAG, VIEW_CNT, REG_ID, REG_DT, EDIT_DT
 		FROM TBL_BOARD
 	</select>
 
@@ -20,7 +20,7 @@
 
 	<select id="getBoardContent" resultType="com.blog.project.board.model.BoardVO" parameterType="com.blog.project.board.model.BoardVO">
 
-		SELECT BID, CATE_CD, TITLE, CONTENT, TAG, VIEW_CNT, REG_ID, REG_DT, EDIT_DT
+		SELECT BID, CATE_ID, TITLE, CONTENT, TAG, VIEW_CNT, REG_ID, REG_DT, EDIT_DT
 		FROM TBL_BOARD
 		WHERE BID = #{bid}
 	</select>
@@ -28,15 +28,15 @@
 	
 
 	<insert id="insertBoard" parameterType="com.blog.project.board.model.BoardVO">
-		INSERT INTO TBL_BOARD (CATE_CD, TITLE, CONTENT, TAG, VIEW_CNT, REG_ID, REG_DT, EDIT_DT) 
-		VALUES ( #{cate_cd}, #{title}, #{content}, #{tag}, 0, #{reg_id}, now(), now())
+		INSERT INTO TBL_BOARD (CATE_ID, TITLE, CONTENT, TAG, VIEW_CNT, REG_ID, REG_DT, EDIT_DT) 
+		VALUES ( #{cate_id}, #{title}, #{content}, #{tag}, 0, #{reg_id}, now(), now())
 	</insert>
 
 	
 
 	<update id="updateBoard" parameterType="com.blog.project.board.model.BoardVO">
 
-		UPDATE TBL_BOARD SET CATE_CD = #{cate_cd}, TITLE = #{title}, CONTENT = #{content}, TAG = #{tag}, EDIT_DT = now()
+		UPDATE TBL_BOARD SET CATE_ID = #{cate_id}, TITLE = #{title}, CONTENT = #{content}, TAG = #{tag}, EDIT_DT = now()
 		WHERE BID = ${bid}
 
 	</update>

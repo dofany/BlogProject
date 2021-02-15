@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 
@@ -10,85 +11,148 @@
 
 <meta charset="UTF-8">
 
+<!-- jQuery -->
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+
+
+<!-- Bootstrap CSS -->
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+	crossorigin="anonymous">
+
+
+
+
 <title>board</title>
+<style>
+body {
+	padding-top: 70px;
+	padding-bottom: 30px;
+}
+</style>
+
+<script>
+	$(document).on('click', '#btnWriteForm', function(e) {
+
+		e.preventDefault();
+
+		location.href = "${pageContext.request.contextPath}/board/boardForm";
+
+	});
+</script>
+
+
+
+
 
 </head>
 
 <body>
+	<article>
 
-<h2>board list</h2>
+		<div class="container">
 
-	<table>
+			<div class="table-responsive">
+				<table class="table table-striped table-sm">
+					<h2>board list</h2>
 
-		<colgroup>
+					<table>
 
-			<col style="width:5%;" />
+						<colgroup>
 
-			<col style="width:auto;" />
+							<col style="width: 5%;" />
 
-			<col style="width:15%;" />
+							<col style="width: auto;" />
 
-			<col style="width:10%;" />
+							<col style="width: 15%;" />
 
-			<col style="width:10%;" />
+							<col style="width: 10%;" />
 
-		</colgroup>
+							<col style="width: 10%;" />
 
-		<thead>
+						</colgroup>
 
-			<tr>
+						<thead>
 
-				<th>NO</th>
+							<tr>
 
-				<th>글제목</th>
+								<th>NO</th>
 
-				<th>작성자</th>
+								<th>글제목</th>
 
-				<th>조회수</th>
+								<th>작성자</th>
 
-				<th>작성일</th>
+								<th>조회수</th>
 
-			</tr>
+								<th>작성일</th>
 
-		</thead>
+							</tr>
 
-		<tbody>
+						</thead>
 
-			<c:choose>
+						<tbody>
 
-				<c:when test="${empty boardList }" >
+							<c:choose>
 
-					<tr><td colspan="5" align="center">데이터가 없습니다.</td></tr>
+								<c:when test="${empty boardList }">
 
-				</c:when> 
+									<tr>
+										<td colspan="5" align="center">데이터가 없습니다.</td>
+									</tr>
 
-				<c:when test="${!empty boardList}">
+								</c:when>
 
-					<c:forEach var="list" items="${boardList}">
+								<c:when test="${!empty boardList}">
 
-						<tr>
+									<c:forEach var="list" items="${boardList}">
 
-							<td><c:out value="${list.bid}"/></td>
+										<tr>
 
-							<td><c:out value="${list.title}"/></td>
+											<td><c:out value="${list.bid}" /></td>
 
-							<td><c:out value="${list.reg_id}"/></td>
+											<td><c:out value="${list.title}" /></td>
 
-							<td><c:out value="${list.view_cnt}"/></td>
+											<td><c:out value="${list.reg_id}" /></td>
 
-							<td><c:out value="${list.reg_dt}"/></td>
+											<td><c:out value="${list.view_cnt}" /></td>
 
-						</tr>
+											<td><c:out value="${list.reg_dt}" /></td>
 
-					</c:forEach>
+										</tr>
 
-				</c:when>
+									</c:forEach>
 
-			</c:choose>
+								</c:when>
 
-		</tbody>
+							</c:choose>
 
-	</table>
+						</tbody>
+
+					</table>
+
+
+				</table>
+
+
+
+			</div>
+
+			<div>
+
+				<button type="button" class="btn btn-sm btn-primary"
+					id="btnWriteForm">글쓰기</button>
+
+			</div>
+
+
+
+		</div>
+	</article>
 
 </body>
 
