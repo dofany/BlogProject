@@ -3,6 +3,9 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
+<%@ include file="/WEB-INF/views/layout/header.jsp"%>
+
 <!DOCTYPE html>
 
 <html>
@@ -37,13 +40,28 @@ body {
 </style>
 
 <script>
-	$(document).on('click', '#btnWriteForm', function(e) {
+
+	$(document).on('click', '#btnWriteForm', function(e){
 
 		e.preventDefault();
+
+		
 
 		location.href = "${pageContext.request.contextPath}/board/boardForm";
 
 	});
+
+	function fn_contentView(bid){
+
+		var url = "${pageContext.request.contextPath}/board/getBoardContent";
+
+		url = url + "?bid="+bid;
+
+		location.href = url;
+
+	}
+
+
 </script>
 
 
@@ -61,82 +79,81 @@ body {
 				<table class="table table-striped table-sm">
 					<h2>board list</h2>
 
-					<table>
+					<colgroup>
 
-						<colgroup>
+						<col style="width: 5%;" />
 
-							<col style="width: 5%;" />
+						<col style="width: auto;" />
 
-							<col style="width: auto;" />
+						<col style="width: 15%;" />
 
-							<col style="width: 15%;" />
+						<col style="width: 10%;" />
 
-							<col style="width: 10%;" />
+						<col style="width: 10%;" />
 
-							<col style="width: 10%;" />
+					</colgroup>
 
-						</colgroup>
+					<thead>
 
-						<thead>
+						<tr>
 
-							<tr>
+							<th>NO</th>
 
-								<th>NO</th>
+							<th>글제목</th>
 
-								<th>글제목</th>
+							<th>작성자</th>
 
-								<th>작성자</th>
+							<th>조회수</th>
 
-								<th>조회수</th>
+							<th>작성일</th>
 
-								<th>작성일</th>
+						</tr>
 
-							</tr>
+					</thead>
 
-						</thead>
+					<tbody>
 
-						<tbody>
+						<c:choose>
 
-							<c:choose>
+							<c:when test="${empty boardList }">
 
-								<c:when test="${empty boardList }">
+								<tr>
+									<td colspan="5" align="center">데이터가 없습니다.</td>
+								</tr>
+
+							</c:when>
+
+							<c:when test="${!empty boardList}">
+
+								<c:forEach var="list" items="${boardList}">
 
 									<tr>
-										<td colspan="5" align="center">데이터가 없습니다.</td>
+
+										<td><c:out value="${list.bid}" /></td>
+
+										<td><a href="#"
+											onClick="fn_contentView(<c:out value="${list.bid}"/>)"> <c:out
+													value="${list.title}" /></a></td>
+
+										<td><c:out value="${list.reg_id}" /></td>
+
+										<td><c:out value="${list.view_cnt}" /></td>
+
+										<td><c:out value="${list.reg_dt}" /></td>
+
 									</tr>
 
-								</c:when>
+								</c:forEach>
 
-								<c:when test="${!empty boardList}">
+							</c:when>
 
-									<c:forEach var="list" items="${boardList}">
+						</c:choose>
 
-										<tr>
-
-											<td><c:out value="${list.bid}" /></td>
-
-											<td><c:out value="${list.title}" /></td>
-
-											<td><c:out value="${list.reg_id}" /></td>
-
-											<td><c:out value="${list.view_cnt}" /></td>
-
-											<td><c:out value="${list.reg_dt}" /></td>
-
-										</tr>
-
-									</c:forEach>
-
-								</c:when>
-
-							</c:choose>
-
-						</tbody>
-
-					</table>
-
+					</tbody>
 
 				</table>
+
+
 
 
 
